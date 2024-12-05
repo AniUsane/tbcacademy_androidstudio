@@ -84,6 +84,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:padding="12dp"
         android:inputType="number"
+        android:maxLength="2"
         />
 
     <Button
