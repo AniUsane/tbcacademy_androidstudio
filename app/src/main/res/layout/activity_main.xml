@@ -29,9 +29,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:padding="12dp"
-        android:inputType="textEmailAddress"
+        android:inputType="textEmailAddress" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:textSize="14dp"
+            android:layout_marginTop="240dp"
+            android:textColor="#FF0000"
+            android:layout_marginStart="60dp"
+            android:background="@null"
+            android:layout_marginHorizontal="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        />
 
     <EditText
         android:id="@+id/username"
@@ -42,8 +55,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:padding="12dp"
-        />
+        android:padding="12dp" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:textSize="14dp"
+            android:background="@null"
+            android:layout_marginTop="290dp"
+            android:textColor="#FF0000"
+            android:layout_marginStart="60dp"
+            android:layout_marginHorizontal="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/first_name"
@@ -55,9 +81,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:padding="12dp"
-        android:inputType="text"
+        android:inputType="text" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:textColor="#FF0000"
+            android:textSize="14dp"
+            android:background="@null"
+            android:layout_marginTop="340dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginHorizontal="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        />
 
     <EditText
         android:id="@+id/last_name"
@@ -69,9 +108,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:padding="12dp"
-        android:inputType="text"
+        android:inputType="text" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:background="@null"
+            android:textSize="14dp"
+            android:textColor="#FF0000"
+            android:layout_marginTop="390dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginHorizontal="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        />
 
     <EditText
         android:id="@+id/age"
@@ -84,8 +136,22 @@
         app:layout_constraintTop_toTopOf="parent"
         android:padding="12dp"
         android:inputType="number"
-        android:maxLength="2"
-        />
+        android:maxLength="2" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:textSize="14dp"
+            android:background="@null"
+            android:layout_marginTop="440dp"
+            android:textColor="#FF0000"
+            android:layout_marginStart="60dp"
+            android:layout_marginHorizontal="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
     <Button
         android:id="@+id/save_btn"
@@ -107,58 +173,6 @@
         android:text="Clear"
         android:textSize="20dp"
         android:backgroundTint="#212121"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/text1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginHorizontal="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/text2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_marginTop="270dp"
-        android:layout_marginLeft="80dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/text3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_marginTop="300dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/text4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_marginTop="350dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/text5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_marginTop="400dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

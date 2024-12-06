@@ -14,6 +14,10 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
 
+        printInfo()
+    }
+
+    private fun printInfo(){
         val email = findViewById<TextView>(R.id.view_text)
         val username = findViewById<TextView>(R.id.view_text2)
         val firstName = findViewById<TextView>(R.id.view_text3)
