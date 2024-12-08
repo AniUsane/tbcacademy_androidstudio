@@ -1,18 +1,12 @@
 package com.example.myapplication
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Patterns
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
-import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
-import com.example.myapplication.Users
 
 class MainActivity : AppCompatActivity() {
+    //Map is used to save the user info, key is email, and value is user name.
     private var usersList = mutableMapOf<String, String>()
     private var count = 0;
     lateinit var binding: ActivityMainBinding
@@ -24,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         validateFields()
     }
 
+    //this function saves user info into map
     private fun addUser(){
         val email = binding.email.text.toString()
         val name = binding.fullName.text.toString()
@@ -31,26 +26,29 @@ class MainActivity : AppCompatActivity() {
         if(usersList.containsKey(email)){
             binding.confirmationMsg.text = "The user with this email already exists!"
         }else{
-                usersList[email] = name
-                binding.confirmationMsg.text = "User added."
+            usersList[email] = name
+            binding.confirmationMsg.text = "User added."
         }
 
         getUserInfo()
 
     }
 
+    //Checks the email and returns according response whether it is saved or not.
     private fun getUserInfo() {
-        val email = binding.email.text.toString()
         binding.getUserInfoBtn.setOnClickListener{
+            var email = binding.email.text.toString()
             if(usersList.containsKey(email)){
                 binding.userInfo.text = "User name is: ${usersList[email]}"
+            }else if(binding.email.text.toString() == ""){
+                binding.userInfo.text = ""
             }else{
                 binding.userInfo.text = "User not found with this email."
             }
         }
     }
 
-
+    //validates fields and adds functionality for the GetUserInfo button without saving the user info
     private fun validateFields() {
         getUserInfo()
         binding.userCount.text = "Users -> $count"
@@ -64,7 +62,8 @@ class MainActivity : AppCompatActivity() {
             }else if(binding.fullName.text.isNotEmpty()){
                 binding.nameText.text = ""
             }else if(binding.fullName.text.isEmpty()){
-                binding.nameText.text = "Full name field is empty."            }
+                binding.nameText.text = "Full name field is empty."
+            }
 
             if(binding.email.text.isEmpty()) {
                 binding.emailText.text = "Email field is empty."
@@ -76,7 +75,6 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
-
 
     }
 }

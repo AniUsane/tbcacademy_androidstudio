@@ -44,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="240dp"
         android:textColor="#C31C1C"
+        android:background="@null"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
@@ -54,6 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="300dp"
         android:textColor="#C31C1C"
+        android:background="@null"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
