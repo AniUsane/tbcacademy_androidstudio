@@ -4,4 +4,8 @@
     <string name="num_limit">Enter number between 1-1000</string>
     <string name="input_limit">შეიყვანე რიცხვი[1-1000]</string>
     <string name="eng">Eng</string>
+    <string name="name">Enter Full Name</string>
+    <string name="email">Enter Email</string>
+    <string name="add_user">Add user</string>
+    <string name="get_user_info">Get User Info</string>
 </resources>
