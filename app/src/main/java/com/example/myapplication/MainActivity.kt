@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         validateFields()
-
     }
 
     private fun addUser(){
@@ -30,20 +29,36 @@ class MainActivity : AppCompatActivity() {
         val name = binding.fullName.text.toString()
 
         if(usersList.containsKey(email)){
-            binding.userCount.text = "The user with this email already exists!"
+            binding.confirmationMsg.text = "The user with this email already exists!"
         }else{
                 usersList[email] = name
-                count += 1
-                binding.userCount.text = "User added."
+                binding.confirmationMsg.text = "User added."
         }
 
+        getUserInfo()
+
+    }
+
+    private fun getUserInfo() {
+        val email = binding.email.text.toString()
+        binding.getUserInfoBtn.setOnClickListener{
+            if(usersList.containsKey(email)){
+                binding.userInfo.text = "User name is: ${usersList[email]}"
+            }else{
+                binding.userInfo.text = "User not found with this email."
+            }
+        }
     }
 
 
     private fun validateFields() {
+        getUserInfo()
+        binding.userCount.text = "Users -> $count"
         binding.addBtn.setOnClickListener {
             if(binding.fullName.text.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(binding.email.text.toString()).matches()) {
                 addUser()
+                count += 1
+                binding.userCount.text = "Users -> $count"
                 binding.nameText.text = ""
                 binding.emailText.text = ""
             }else if(binding.fullName.text.isNotEmpty()){
@@ -61,6 +76,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+
 
     }
 }
