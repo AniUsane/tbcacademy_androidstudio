@@ -4,4 +4,5 @@
     <string name="num_limit">Enter number between 1-1000</string>
     <string name="input_limit">შეიყვანე რიცხვი[1-1000]</string>
     <string name="eng">Eng</string>
+    <string name="enter_anagram">Enter Anagram</string>
 </resources>
