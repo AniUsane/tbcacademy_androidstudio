@@ -1,12 +1,9 @@
 package com.example.myapplication
 
-import android.annotation.SuppressLint
+import android.graphics.Color
+import android.graphics.LinearGradient
+import android.graphics.Shader
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
-import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
 
@@ -17,6 +14,20 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
+
+    }
+
+    //It does not work properly
+    private fun gradient(){
+        val paint = binding.mainText.paint
+        paint.shader = LinearGradient(
+            0f, 0f, 0f, binding.mainText.textSize, intArrayOf(
+                Color.parseColor("#A5A5A5"),
+                Color.parseColor("#00A5A5A5")
+            ), null,Shader.TileMode.CLAMP
+        )
     }
 }
 

@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">My Application</string>
-    <string name="string">შესაბამისი ტექსტი ქართულად</string>
+    <string name="name_text">Andes Mountain</string>
     <string name="num_limit">Enter number between 1-1000</string>
     <string name="input_limit">შეიყვანე რიცხვი[1-1000]</string>
     <string name="eng">Eng</string>
+    <string name="dfhsvbf">dfhsvbf</string>
+    <string name="south_america">South, America</string>
 </resources>
