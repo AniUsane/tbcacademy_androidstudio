@@ -1,7 +1,18 @@
 <resources>
     <string name="app_name">My Application</string>
-    <string name="string">შესაბამისი ტექსტი ქართულად</string>
-    <string name="num_limit">Enter number between 1-1000</string>
-    <string name="input_limit">შეიყვანე რიცხვი[1-1000]</string>
-    <string name="eng">Eng</string>
+    <string name="name">Pawel Czerwinski</string>
+    <string name="username">\@pawel_czerwinski</string>
+    <string name="btn1">log in</string>
+    <string name="btn2">register</string>
+    <string name="page_name">Log In</string>
+    <string name="field1">Email</string>
+    <string name="field2">Password</string>
+    <string name="btn_log_in">Log In</string>
+    <string name="reg_page_name">Register</string>
+    <string name="reg_email">Email</string>
+    <string name="password">Password</string>
+    <string name="reg_btn">Next</string>
+    <string name="reg2_name">Register</string>
+    <string name="user_name">Username</string>
+    <string name="sign_up_btn">Sign Up</string>
 </resources>
