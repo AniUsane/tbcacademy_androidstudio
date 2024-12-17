@@ -1,6 +1,5 @@
 package com.example.myapplication
 
-import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Patterns
@@ -9,7 +8,6 @@ import com.example.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private var userList = mutableListOf<Users>()
     private val usersList = mutableMapOf<String, Users>()
     private val removedUsers = mutableListOf<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,13 +18,13 @@ class MainActivity : AppCompatActivity() {
         binding.addUserBtn.setOnClickListener{
             checkFields()
             addUser()
-            binding.activeUsers.text = "Online Users: ${userList.size}"
+            binding.activeUsers.text = "Online Users: ${usersList.size}"
         }
 
         binding.removeUserBtn.setOnClickListener{
             removeUser()
             binding.removedUsers.text = "Removed Users: ${removedUsers.size}"
-            binding.activeUsers.text = "Online Users: ${userList.size}"
+            binding.activeUsers.text = "Online Users: ${usersList.size}"
         }
 
         binding.updateUserBtn.setOnClickListener{
@@ -39,14 +37,14 @@ class MainActivity : AppCompatActivity() {
         if(binding.email.text?.isEmpty() == true){
             binding.identificationTxt.setTextColor(Color.parseColor("#F44336"))
             binding.identificationTxt.text = "Please fill in all the fields."
-        }else if(userList.contains(Users(binding.email.text.toString()))) {
+        }else if(usersList.contains(binding.email.text.toString())) {
             binding.identificationTxt.setTextColor(Color.parseColor("#F44336"))
             binding.identificationTxt.text = "User already exists."
         }else if(!Patterns.EMAIL_ADDRESS.matcher(binding.email.text.toString()).matches()){
             binding.identificationTxt.setTextColor(Color.parseColor("#F44336"))
             binding.identificationTxt.text = "Please write the correct email address."
         }else{
-            userList.add(Users(binding.firstName.text.toString(), binding.lastName.text.toString(), binding.age.text.toString(), binding.email.text.toString()))
+            usersList.put(binding.email.text.toString(), Users(name = binding.firstName.text.toString(), lastName = binding.lastName.text.toString(), age = binding.age.text.toString()))
             binding.identificationTxt.setTextColor(Color.parseColor("#4CAF50"))
             binding.identificationTxt.text = "User added successfully."
         }
@@ -61,8 +59,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun removeUser(){
-        if(userList.any { it.email == binding.email.text.toString() }) {
-            userList.remove(Users(email = binding.email.text.toString()))
+        if(usersList.contains(binding.email.text.toString())) {
+            usersList.remove(binding.email.text.toString())
             binding.identificationTxt.setTextColor(Color.parseColor("#4CAF50"))
             binding.identificationTxt.text = "User deleted successfully."
             removedUsers.add(binding.email.text.toString())
@@ -74,13 +72,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateUser(){
-        if(!(userList.any { it.email == binding.email.text.toString() })){
+        if(usersList.contains(binding.email.text.toString())){
+            usersList[binding.email.text.toString()] = Users(name = binding.firstName.text.toString(), binding.lastName.text.toString(), age = binding.age.text.toString())
+            binding.identificationTxt.setTextColor(Color.parseColor("#4CAF50"))
+            binding.identificationTxt.text = "User information updated successfully."
+
+        }else{
             binding.identificationTxt.setTextColor(Color.parseColor("#F44336"))
             binding.identificationTxt.text = "User does not exist."
-        }else{
-            userList.replace(name = binding.firstName.text.toString(), binding.lastName.text.toString(), age = binding.age.text.toString(), email = binding.email.text.toString() )
-            binding.identificationTxt.setTextColor(Color.parseColor("#4CAF50"))
-            binding.identificationTxt.text = "User information updated successfully. $userList"
         }
     }
 }
