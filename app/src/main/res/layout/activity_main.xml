@@ -43,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Last Name"
-        android:textColor="@color/white"
+        android:textColor="#4CAF50"
         android:background="@drawable/fields_style"
         android:padding="12dp"
         android:layout_marginTop="10dp"
@@ -54,10 +54,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Age"
-        android:textColor="@color/white"
+        android:textColor="#F44336"
         android:background="@drawable/fields_style"
         android:padding="12dp"
         android:layout_marginTop="10dp"
+        android:inputType="number"
         app:layout_constraintTop_toBottomOf="@+id/last_name"
         />
 
@@ -70,6 +71,7 @@
         android:textColor="@color/white"
         android:padding="12dp"
         android:layout_marginTop="10dp"
+        android:inputType="textEmailAddress"
         app:layout_constraintTop_toBottomOf="@+id/age"
         />
 
@@ -145,7 +147,6 @@
         android:id="@+id/active_users"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Online Users: 1"
         android:textSize="18sp"
         android:fontFamily="@font/roboto_regular"
         android:layout_marginTop="10dp"
@@ -157,7 +158,6 @@
         android:id="@+id/removed_users"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Removed Users: 1"
         android:fontFamily="@font/roboto_regular"
         android:textSize="18sp"
         android:layout_marginTop="10dp"
