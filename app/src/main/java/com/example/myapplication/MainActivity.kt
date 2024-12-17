@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
             checkFields()
             addUser()
             binding.activeUsers.text = "Online Users: ${usersList.size}"
+
         }
 
         binding.removeUserBtn.setOnClickListener{
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addUser(){
-        if(binding.email.text?.isEmpty() == true){
+        if(binding.email.text?.isEmpty() == true || binding.firstName.text?.isEmpty() == true || binding.lastName.text?.isEmpty() == true || binding.age.text?.isEmpty() == true){
             binding.identificationTxt.setTextColor(Color.parseColor("#F44336"))
             binding.identificationTxt.text = "Please fill in all the fields."
         }else if(usersList.contains(binding.email.text.toString())) {
@@ -51,11 +52,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkFields(){
-        if(binding.email.text?.isEmpty() == true || binding.age.text?.isEmpty() == true || binding.firstName.text?.isEmpty() == true || binding.lastName.text?.isEmpty() == true ){
-            binding.identificationTxt.setTextColor(Color.parseColor("#F44336"))
-            binding.identificationTxt.text = "Please fill in all the fields."
+        if(binding.email.text?.isEmpty() == true){
+            binding.email.error = "Enter your email"
         }
-
+        if(binding.firstName.text?.isEmpty() == true)
+            binding.firstName.error = "Enter your first name"
+        if(binding.lastName.text?.isEmpty() == true)
+            binding.lastName.error = "Enter your last name"
+        if(binding.age.text?.isEmpty() == true)
+            binding.age.error = "Enter your age"
     }
 
     private fun removeUser(){
