@@ -3,10 +3,7 @@ package com.example.myapplication
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.widget.TextViewCompat
 import androidx.recyclerview.widget.RecyclerView
 
 class FilterAdapter(private val filterList: List<FilterDataClass>):
