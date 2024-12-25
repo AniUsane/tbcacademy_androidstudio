@@ -26,7 +26,7 @@ class AdapterClass(private val dataList:ArrayList<DataClass>): RecyclerView.Adap
         holder.rvPrice.text = currentItem.dataPrice
     }
 
-    class ViewHolderClass(itemView: View):RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolderClass(itemView: View):RecyclerView.ViewHolder(itemView) {
         val rvImage: ImageView = itemView.findViewById(R.id.card_image)
         val rvTitle: TextView = itemView.findViewById(R.id.item_name)
         val rvPrice: TextView = itemView.findViewById(R.id.item_price)

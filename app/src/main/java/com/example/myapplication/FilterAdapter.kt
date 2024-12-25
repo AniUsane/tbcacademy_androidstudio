@@ -21,13 +21,14 @@ class FilterAdapter(private val filterList: List<FilterDataClass>):
         val filterButton = filterList[position]
         holder.rvFilterButton.text = filterButton.filterName
         holder.rvFilterEmoji.text = filterButton.filterEmoji
+
     }
 
     override fun getItemCount(): Int {
         return filterList.size
     }
 
-    class FilterViewHolder(itemView:View) : RecyclerView.ViewHolder(itemView){
+    inner class FilterViewHolder(itemView:View) : RecyclerView.ViewHolder(itemView){
         val rvFilterButton: TextView = itemView.findViewById(R.id.filter_button)
         val rvFilterEmoji: TextView = itemView.findViewById(R.id.filter_emoji)
     }
