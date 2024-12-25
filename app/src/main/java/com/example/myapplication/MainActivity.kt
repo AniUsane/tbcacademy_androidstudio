@@ -58,12 +58,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addDataToFilter(){
-        filterList.add(FilterDataClass("All"))
-        filterList.add(FilterDataClass("Party"))
-        filterList.add(FilterDataClass("Camping"))
-        filterList.add(FilterDataClass("Category1"))
-        filterList.add(FilterDataClass("Category2"))
-        filterList.add(FilterDataClass("Category3"))
+        filterList.add(FilterDataClass("","All"))
+        filterList.add(FilterDataClass("🎉","Party"))
+        filterList.add(FilterDataClass("🏕️","Camping"))
+        filterList.add(FilterDataClass("🎉","Category1"))
+        filterList.add(FilterDataClass("🏕️","Category2"))
+        filterList.add(FilterDataClass("🎉","Category3"))
     }
 
     private fun addItems(){
@@ -138,6 +138,10 @@ class MainActivity : AppCompatActivity() {
             "Category3",
             "Party"
         )
+    }
+
+    public fun filterByCategory(){
+
     }
 }
 

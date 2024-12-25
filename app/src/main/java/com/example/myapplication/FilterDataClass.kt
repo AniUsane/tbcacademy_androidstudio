@@ -1,3 +1,3 @@
 package com.example.myapplication
 
-data class FilterDataClass(var filterName:String)
+data class FilterDataClass(var filterEmoji:String, var filterName:String)
