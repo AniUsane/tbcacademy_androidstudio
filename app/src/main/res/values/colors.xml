@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="titleColor">#121420</color>
+    <color name="textColor">#23262F</color>
+    <color name="editColor">#F80000</color>
+    <color name="addressColor">#777E90</color>
+
 </resources>
