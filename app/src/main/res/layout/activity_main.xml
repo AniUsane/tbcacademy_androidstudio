@@ -43,10 +43,33 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/white"
+        android:visibility="visible"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title"
+        />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/add_new_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add new address"
+        android:fontFamily="@font/pt_sans_caption_regular"
+        android:textColor="@color/white"
+        android:background="@drawable/add_btn"
+        android:textSize="16sp"
+        android:paddingHorizontal="31dp"
+        android:paddingVertical="13dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recycler_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <FrameLayout
+        android:id="@+id/fragment1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         />
 
 

@@ -18,39 +18,39 @@ class AddressDiffUtil: DiffUtil.ItemCallback<AddressClass>(){
 
 }
 
-    class Adapter(val items: List<AddressClass>): RecyclerView.Adapter<Adapter.AddressViewHolder>() {
+class ItemAdapter(val items: List<AddressClass>): ListAdapter<AddressClass, ItemAdapter.AddressViewHolder>(AddressDiffUtil()) {
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddressViewHolder {
-            return AddressViewHolder(
-                AddressCardsBinding.inflate(
-                    LayoutInflater.from(parent.context),
-                    parent,
-                    false
-                )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddressViewHolder {
+        return AddressViewHolder(
+            AddressCardsBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
             )
-        }
-
-        override fun getItemCount(): Int {
-            return items.size
-        }
-
-        override fun onBindViewHolder(holder: AddressViewHolder, position: Int) {
-            holder.onBind()
-        }
-
-        inner class AddressViewHolder(val binding: AddressCardsBinding) :
-            RecyclerView.ViewHolder(binding.root){
-                fun onBind(){
-                    val model: AddressClass = items[adapterPosition]
-                    binding.address.text = model.address
-                    binding.addressName.text = model.addressName
-                    binding.cardIcon.setImageResource(model.dataImage)
-
-                }
-            }
-
-
+        )
     }
+
+    override fun getItemCount(): Int {
+        return items.size
+    }
+
+    override fun onBindViewHolder(holder: AddressViewHolder, position: Int) {
+        holder.onBind()
+    }
+
+    inner class AddressViewHolder(val binding: AddressCardsBinding) :
+        RecyclerView.ViewHolder(binding.root){
+            fun onBind(){
+                val model: AddressClass = items[adapterPosition]
+                binding.address.text = model.address
+                binding.addressName.text = model.addressName
+                binding.cardIcon.setImageResource(model.dataImage)
+
+            }
+        }
+
+
+}
 
 
 

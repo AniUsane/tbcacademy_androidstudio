@@ -6,5 +6,7 @@
     <color name="textColor">#23262F</color>
     <color name="editColor">#F80000</color>
     <color name="addressColor">#777E90</color>
+    <color name="buttonColor">#343434</color>
+
 
 </resources>

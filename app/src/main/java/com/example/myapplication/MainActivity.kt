@@ -1,14 +1,15 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
-    private val items = mutableListOf(
+    lateinit var binding: ActivityMainBinding
+    var items = mutableListOf(
         AddressClass(
             id = 1,
             dataImage = R.drawable.office,
@@ -24,13 +25,32 @@ class MainActivity : AppCompatActivity() {
 
     )
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        binding.recyclerView.adapter = Adapter(items)
+        binding.recyclerView.adapter = ItemAdapter(items)
+
+        var addAddressFragment = AddNewAddressFragment()
+
+
+        binding.addNewAddress.setOnClickListener{
+            supportFragmentManager.beginTransaction().apply {
+            replace(R.id.fragment1, addAddressFragment)
+            addToBackStack("AddressRecyclerView")
+                binding.recyclerView.visibility = View.GONE
+                binding.addNewAddress.visibility = View.GONE
+                binding.title.text = "Add new delivery address"
+            commit()
+            }
+        }
+
+
+
 
     }
 }
