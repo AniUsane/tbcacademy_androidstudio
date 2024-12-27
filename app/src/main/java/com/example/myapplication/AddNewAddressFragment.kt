@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.myapplication.databinding.AddNewAddressBinding
-import com.example.myapplication.databinding.AddressCardsBinding
 
 class AddNewAddressFragment : Fragment(R.layout.add_new_address) {
     private lateinit var binding: AddNewAddressBinding
@@ -32,10 +32,24 @@ class AddNewAddressFragment : Fragment(R.layout.add_new_address) {
         }
 
         binding.addAddress.setOnClickListener{
-            activity.items.add(1, AddressClass(0, 0, binding.enterAddressName.text.toString(), binding.enterAddress.text.toString()))
-            activity.supportFragmentManager.popBackStack()
-            activity.binding.recyclerView.visibility = View.VISIBLE
-            activity.binding.addNewAddress.visibility = View.VISIBLE
+
+            if(binding.enterAddress.text!!.isNotEmpty() && binding.enterAddressName.text!!.isNotEmpty()){
+                val addedAddress = AddressClass(activity.items.size+1, R.drawable.location, binding.enterAddressName.text.toString(), binding.enterAddress.text.toString())
+                activity.binding.recyclerView.visibility = View.VISIBLE
+                activity.binding.addNewAddress.visibility = View.VISIBLE
+                activity.binding.title.text = "Delivery address"
+                binding.enterAddress.text?.clear()
+                binding.enterAddressName.text?.clear()
+
+                activity.items.add(addedAddress)
+                activity.supportFragmentManager.popBackStack()
+
+            }else{
+                Toast.makeText(activity, "Please fill in all fields", Toast.LENGTH_SHORT).show()
+            }
+
+
+
         }
 
 

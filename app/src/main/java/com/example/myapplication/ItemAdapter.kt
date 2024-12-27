@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -34,48 +35,58 @@ class ItemAdapter(val items: List<AddressClass>): ListAdapter<AddressClass, Item
         return items.size
     }
 
+
+
+
     override fun onBindViewHolder(holder: AddressViewHolder, position: Int) {
         holder.onBind()
     }
 
     inner class AddressViewHolder(val binding: AddressCardsBinding) :
         RecyclerView.ViewHolder(binding.root){
-            fun onBind(){
-                val model: AddressClass = items[adapterPosition]
-                binding.address.text = model.address
-                binding.addressName.text = model.addressName
-                binding.cardIcon.setImageResource(model.dataImage)
+        fun onBind(){
+            val model: AddressClass = items[adapterPosition]
+            binding.address.text = model.address
+            binding.addressName.text = model.addressName
+            binding.cardIcon.setImageResource(model.dataImage)
+
+            binding.radioBtn.setOnFocusChangeListener { v, hasFocus ->
+                // When the radio button gains focus, show the editLink
+                if (hasFocus) {
+                    binding.editLink.visibility = View.VISIBLE
+                } else {
+                    // Optionally hide the editLink when the radio button loses focus
+                    binding.editLink.visibility = View.GONE
+                }
 
             }
+
+            binding.root.setOnLongClickListener {
+                removeItem(adapterPosition)
+                true
+            }
+
+
         }
+
+
+
+        private fun removeItem(position: Int) {
+            (items as MutableList).removeAt(position)
+
+            notifyItemRemoved(position)
+
+        }
+
+
+
+    }
 
 
 }
 
 
 
-//package com.example.myapplication
-//
-//import android.view.ViewGroup
-//import androidx.recyclerview.widget.ListAdapter
-//import androidx.recyclerview.widget.RecyclerView
-//import com.example.myapplication.databinding.AddressCardsBinding
-//
-//class Adapter(private val dataList:ArrayList<AddressClass>):ListAdapter<AddressClass, Adapter.AddressViewHolder>() {
-//
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddressViewHolder {
-//        TODO("Not yet implemented")
-//    }
-//
-//    override fun onBindViewHolder(holder: AddressViewHolder, position: Int) {
-//        TODO("Not yet implemented")
-//    }
-//
-//    inner class AddressViewHolder(val binding: AddressCardsBinding){
-//        RecyclerView.ViewHolder(binding.root){
-//            fun onBind(){
-//
-//            }
-//        }
-//    }
-//}
+
+
+

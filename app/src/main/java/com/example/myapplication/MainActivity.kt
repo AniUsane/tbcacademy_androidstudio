@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -25,6 +24,8 @@ class MainActivity : AppCompatActivity() {
 
     )
 
+    
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +36,10 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = ItemAdapter(items)
 
-        var addAddressFragment = AddNewAddressFragment()
+        val addAddressFragment = AddNewAddressFragment()
+
+        val adapter = ItemAdapter(items)
+        binding.recyclerView.adapter = adapter
 
 
         binding.addNewAddress.setOnClickListener{
@@ -48,6 +52,7 @@ class MainActivity : AppCompatActivity() {
             commit()
             }
         }
+
 
 
 
