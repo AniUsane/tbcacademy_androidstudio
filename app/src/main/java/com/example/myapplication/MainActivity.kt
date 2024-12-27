@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         val addAddressFragment = AddNewAddressFragment()
 
         val adapter = ItemAdapter(items)
-        binding.recyclerView.adapter = adapter
+        adapter.submitList(items)
 
 
         binding.addNewAddress.setOnClickListener{

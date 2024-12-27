@@ -41,6 +41,7 @@ class AddNewAddressFragment : Fragment(R.layout.add_new_address) {
                 binding.enterAddress.text?.clear()
                 binding.enterAddressName.text?.clear()
 
+
                 activity.items.add(addedAddress)
                 activity.supportFragmentManager.popBackStack()
 
@@ -48,10 +49,7 @@ class AddNewAddressFragment : Fragment(R.layout.add_new_address) {
                 Toast.makeText(activity, "Please fill in all fields", Toast.LENGTH_SHORT).show()
             }
 
-
-
         }
-
 
     }
 

@@ -66,7 +66,6 @@ class ItemAdapter(val items: List<AddressClass>): ListAdapter<AddressClass, Item
                 true
             }
 
-
         }
 
 
@@ -77,7 +76,6 @@ class ItemAdapter(val items: List<AddressClass>): ListAdapter<AddressClass, Item
             notifyItemRemoved(position)
 
         }
-
 
 
     }
