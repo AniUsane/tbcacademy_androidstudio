@@ -1,7 +1,13 @@
 <resources>
     <string name="app_name">My Application</string>
-    <string name="string">შესაბამისი ტექსტი ქართულად</string>
-    <string name="num_limit">Enter number between 1-1000</string>
-    <string name="input_limit">შეიყვანე რიცხვი[1-1000]</string>
-    <string name="eng">Eng</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="order">Order</string>
+    <string name="order_number">#1524</string>
+    <string name="date">13/05/2021</string>
+    <string name="tracking">Tracking number:</string>
+    <string name="tracking_number">IK287368838</string>
+    <string name="quantity">Quanlity:</string>
+    <string name="subtotal">Subtotal:</string>
+    <string name="details">Details</string>
+    <string name="my_orders">My Orders</string>
 </resources>

@@ -2,4 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="button_color">#43484B</color>
+    <color name="date_color">#777E90</color>
+    <color name="order_num_color">#141416</color>
+    <color name="pending_color">#CF6212</color>
+    <color name="delivered_colo">#009254</color>
+    <color name="cancelled_color">#C50000</color>
 </resources>
