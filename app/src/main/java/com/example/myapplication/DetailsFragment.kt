@@ -32,12 +32,12 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         arguments?.let {
-            val orderNumber = it.getString("Order number is: ")
+            val orderNumber = it.getString("order number is: ")
             val trackingNumber = it.getString("tracking number is: ")
-            val quantity = it.getString("quantity: ")
+            val quantity = it.getString("quantity is: ")
             val total = it.getString("total is: ")
             val orderStatus = it.getString("order status is: ")
-            val date = Date(it.getLong("date"))
+            val date = Date(it.getLong("date: "))
 
             binding.orderNumber.text = orderNumber
             binding.trackingNumber.text = trackingNumber
