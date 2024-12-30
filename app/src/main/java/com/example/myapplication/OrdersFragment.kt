@@ -35,7 +35,7 @@ class OrdersFragment : Fragment() {
         CardsData(id =UUID.randomUUID(), date = Date(1638648000000), orderNumber = "#1524",
             trackingNumber = "IK2873218897", quantity = 3, total = "\$230", orderStatus = FilterStatus.Pending),
         CardsData(id =UUID.randomUUID(), date = Date(1638648000000), orderNumber = "#1679",
-            trackingNumber = "IK2873218897", quantity = 3, total = "\$230", orderStatus = FilterStatus.Pending),
+            trackingNumber = "IK2873218897", quantity = 3, total = "\$500", orderStatus = FilterStatus.Pending),
         CardsData(id =UUID.randomUUID(), date = Date(1638648000000), orderNumber = "#1524",
             trackingNumber = "IK2873218897", quantity = 3, total = "\$230", orderStatus = FilterStatus.Pending),
         CardsData(id =UUID.randomUUID(), date = Date(1638648000000), orderNumber = "#1514",
@@ -89,5 +89,33 @@ class OrdersFragment : Fragment() {
         (binding.cardRecycler.adapter as CardsAdapter).submitList(filteredCards)
     }
 
+    private fun clickedDetailsButton(cardsModel: CardsData){
+        val detailsFragment = DetailsFragment()
+        val bundle = Bundle().apply {
+            putString("order number is: ", cardsModel.orderNumber)
+            putString("tracking number is: ", cardsModel.trackingNumber)
+            putInt("quantity is: ", cardsModel.quantity)
+            putString("total is: ", cardsModel.total)
+            putString("order status is: ", cardsModel.orderStatus.name)
+            putLong("date: ", cardsModel.date.time)
+        }
+
+        detailsFragment.arguments = bundle
+
+        requireActivity().supportFragmentManager.beginTransaction().apply {
+            replace(R.id.details_fragment, detailsFragment)
+            addToBackStack("DetailsRecyclerView")
+            binding.filterRecycler.visibility = View.GONE
+            binding.cardRecycler.visibility = View.GONE
+            binding.title.text = "Order details"
+            binding.title.visibility = View.VISIBLE
+            commit()
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
 }
