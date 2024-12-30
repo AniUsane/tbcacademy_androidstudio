@@ -8,4 +8,5 @@
     <color name="pending_color">#CF6212</color>
     <color name="delivered_colo">#009254</color>
     <color name="cancelled_color">#C50000</color>
+    <color name="nav_bar_stroke">#E6E8EC</color>
 </resources>

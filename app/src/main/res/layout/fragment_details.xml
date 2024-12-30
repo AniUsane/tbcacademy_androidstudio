@@ -5,9 +5,37 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingHorizontal="20dp"
-    android:paddingTop="63dp"
     android:background="@color/white"
     tools:context=".DetailsFragment">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/menu_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/menu_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/my_orders"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toRightOf="@+id/menu_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/bell_icon"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/bell_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bell_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/order"
@@ -15,8 +43,9 @@
         android:layout_height="wrap_content"
         android:text="Order "
         android:textSize="18sp"
+        android:layout_marginTop="32dp"
         android:textColor="@color/order_num_color"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
         app:layout_constraintLeft_toLeftOf="parent"
         />
 
@@ -26,8 +55,9 @@
         android:layout_height="wrap_content"
         android:text="#1524"
         android:textSize="18sp"
+        android:layout_marginTop="32dp"
         android:textColor="@color/order_num_color"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
         app:layout_constraintLeft_toRightOf="@+id/order"
         />
 
@@ -37,8 +67,9 @@
         android:layout_height="wrap_content"
         android:text="13/05/2021"
         android:textSize="14sp"
+        android:layout_marginTop="32dp"
         android:textColor="@color/date_color"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
         app:layout_constraintRight_toRightOf="parent"
         />
 
