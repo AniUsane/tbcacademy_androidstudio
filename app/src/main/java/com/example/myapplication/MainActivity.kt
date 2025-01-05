@@ -11,7 +11,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        supportFragmentManager.beginTransaction().apply{
+            replace(R.id.fragment, ChatFragment())
+            addToBackStack("ChatFragment")
+            commit()
+        }
 
     }
 }

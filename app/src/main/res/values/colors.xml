@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="hint_color">#B1B5C3</color>
+    <color name="division_color">#40000000</color>
+    <color name="sent_message">#E6E8EC</color>
+    <color name="received_message">#F4F5F6</color>
 </resources>
