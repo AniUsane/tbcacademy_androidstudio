@@ -11,6 +11,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.config_fragment, ConfigFragment())
+            addToBackStack("AddressRecyclerView")
+            commit()
+        }
 
     }
 }
