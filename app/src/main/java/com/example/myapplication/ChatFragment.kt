@@ -44,6 +44,11 @@ class ChatFragment : Fragment() {
         sendMessages(adapter)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun sendMessages(adapter: MessagesAdapter) {
         binding.sendBtn.setOnClickListener {
             if(binding.typeMessage.text?.trim()?.isNotEmpty() == true) {
