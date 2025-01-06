@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_row="3"
-    android:layout_column="3">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
 
     <ImageButton
-        android:id="@+id/image"
-        android:src="@drawable/x"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="image" />
+        android:id="@+id/image_btn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="fitCenter"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/white"
+        android:contentDescription="Grid item"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
 
-</GridLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

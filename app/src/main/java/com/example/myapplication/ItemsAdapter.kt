@@ -1,23 +1,29 @@
 package com.example.myapplication
 
-import android.content.ClipData.Item
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.databinding.FragmentConfigBinding
 import com.example.myapplication.databinding.RecyclerViewBinding
 
+class ItemsDiffUtil: DiffUtil.ItemCallback<Items>(){
+    override fun areItemsTheSame(oldItem: Items, newItem: Items): Boolean {
+        return oldItem.id == newItem.id
+    }
 
-class ItemsAdapter(val adapterList: List<Items>): RecyclerView.Adapter<ItemsAdapter.ItemsViewHolder>() {
+    override fun areContentsTheSame(oldItem: Items, newItem: Items): Boolean {
+        return oldItem == newItem
+    }
 
-    inner class ItemsViewHolder(private val binding: FragmentConfigBinding):
-            RecyclerView.ViewHolder(binding.root)
+}
+
+class ItemsAdapter(private val itemClickListener: (Items) -> Unit): ListAdapter<Items, ItemsAdapter.ItemsViewHolder>(ItemsDiffUtil()) {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemsViewHolder {
         return ItemsViewHolder(
-            FragmentConfigBinding.inflate(
+            RecyclerViewBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -25,13 +31,20 @@ class ItemsAdapter(val adapterList: List<Items>): RecyclerView.Adapter<ItemsAdap
         )
     }
 
-    override fun getItemCount(): Int {
-        return adapterList.size
-    }
-
     override fun onBindViewHolder(holder: ItemsViewHolder, position: Int) {
-        fun onBind(){
-
-        }
+        val item = getItem(position)
+        holder.onBind(item)
     }
+
+    inner class ItemsViewHolder(private val binding: RecyclerViewBinding):
+        RecyclerView.ViewHolder(binding.root){
+            fun onBind(item: Items){
+                binding.imageBtn.setImageResource(item.image)
+
+                binding.imageBtn.setOnClickListener{
+                    itemClickListener(item)
+                }
+            }
+        }
+
 }
