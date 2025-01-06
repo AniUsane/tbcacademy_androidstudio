@@ -95,10 +95,8 @@ class MessagesAdapter: ListAdapter<MessagesData, MessagesAdapter.MessagesViewHol
             calendar.time = date
             yesterday.add(Calendar.DAY_OF_YEAR, -1)
 
-            val isToday = calendar.get(Calendar.YEAR) == today.get(Calendar.YEAR) &&
-                    calendar.get(Calendar.DAY_OF_YEAR) == today.get(Calendar.DAY_OF_YEAR)
-            val wasYesterday = calendar.get(Calendar.YEAR) == yesterday.get(Calendar.YEAR)&&
-                    calendar.get(Calendar.DAY_OF_YEAR) == yesterday.get(Calendar.DAY_OF_YEAR)
+            val isToday = calendar.get(Calendar.DAY_OF_YEAR) == today.get(Calendar.DAY_OF_YEAR)
+            val wasYesterday = calendar.get(Calendar.DAY_OF_YEAR) == yesterday.get(Calendar.DAY_OF_YEAR)
 
             val timeFormat = SimpleDateFormat("h:mm a", Locale.getDefault())
 
