@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/myOrdersFragment">
 
+    <fragment
+        android:id="@+id/myOrdersFragment"
+        android:name="com.example.myapplication.MyOrdersFragment"
+        android:label="fragment_my_orders"
+        tools:layout="@layout/fragment_my_orders" >
+        <action
+            android:id="@+id/action_myOrdersFragment_to_reviewFragment"
+            app:destination="@id/reviewFragment" />
+        <argument
+            android:name="cardInfo"
+            app:argType="com.example.myapplication.CardClass" />
+    </fragment>
+    <fragment
+        android:id="@+id/reviewFragment"
+        android:name="com.example.myapplication.ReviewFragment"
+        android:label="fragment_review"
+        tools:layout="@layout/fragment_review">
+        <argument
+            android:name="cardInfo"
+            app:argType="com.example.myapplication.CardClass" />
+    </fragment>
 </navigation>
