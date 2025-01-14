@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_layout"
+    android:paddingBottom="16dp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/card_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintTop_toTopOf="@+id/card_layout"
+        app:layout_constraintRight_toRightOf="@+id/card_layout"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/card_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:text="4364 1345 8932 8378"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:letterSpacing="0.15"
+        android:textAlignment="center"
+        app:layout_constraintLeft_toLeftOf="@+id/card_layout"
+        app:layout_constraintRight_toRightOf="@+id/card_layout"
+        app:layout_constraintTop_toTopOf="@+id/card_layout" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/holder_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="151dp"
+        android:layout_marginLeft="16dp"
+        android:text="Sunie Pham"
+        android:textColor="@color/white"
+        android:textSize="11dp"
+        app:layout_constraintLeft_toLeftOf="@+id/card_layout"
+        app:layout_constraintTop_toTopOf="@+id/card_layout"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/valid_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="151dp"
+        android:layout_marginLeft="16dp"
+        android:text="05/24"
+        android:textColor="@color/white"
+        android:textSize="11dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintRight_toRightOf="@+id/card_layout"
+        app:layout_constraintBaseline_toBaselineOf="@+id/holder_name"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

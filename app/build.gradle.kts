@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.safeargs)
+    id("kotlin-parcelize")
 }
 
 android {
@@ -53,4 +54,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
+    implementation(libs.androidx.viewpager2)
+    implementation (libs.material.v140)
 }

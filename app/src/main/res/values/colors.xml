@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="page_title">#121420</color>
+    <color name="add_new_color">#ED0006</color>
+    <color name="alternative_ways">#33302E</color>
+    <color name="stroke_color">#EFF1F6</color>
+    <color name="amex_background">#1F72CD</color>
+    <color name="bottom_sheet">#5DFFFFFF</color>
+    <color name="add_card_texts">#7A869A99</color>
+    <color name="edit_text">#172B4D</color>
+    <color name="button_color">#343434</color>
 </resources>
