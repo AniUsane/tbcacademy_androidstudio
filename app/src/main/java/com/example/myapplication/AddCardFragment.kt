@@ -7,11 +7,10 @@ import java.util.UUID
 
 class AddCardFragment : BaseFragment<FragmentAddCardBinding>(FragmentAddCardBinding::inflate) {
 
-    private lateinit var cardInfo:CardInfo
-
     override fun start() {
 
         addCard()
+
     }
 
 

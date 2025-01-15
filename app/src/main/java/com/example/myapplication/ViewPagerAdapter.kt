@@ -1,14 +1,14 @@
 package com.example.myapplication
 
-import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.CardLayoutBinding
+import java.text.SimpleDateFormat
 
-class CardDiffUtil: DiffUtil.ItemCallback<CardInfo>(){
+class CardDiffUtil : DiffUtil.ItemCallback<CardInfo>() {
     override fun areItemsTheSame(oldItem: CardInfo, newItem: CardInfo): Boolean {
         return oldItem.id == newItem.id
     }
@@ -19,7 +19,8 @@ class CardDiffUtil: DiffUtil.ItemCallback<CardInfo>(){
 
 }
 
-class ViewPagerAdapter(private val cardLongClick: (CardInfo) -> Unit) : ListAdapter<CardInfo, ViewPagerAdapter.ViewPagerViewHolder>(CardDiffUtil()) {
+class ViewPagerAdapter(private val cardLongClick: (CardInfo) -> Unit) :
+    ListAdapter<CardInfo, ViewPagerAdapter.ViewPagerViewHolder>(CardDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewPagerViewHolder {
         return ViewPagerViewHolder(
@@ -39,22 +40,24 @@ class ViewPagerAdapter(private val cardLongClick: (CardInfo) -> Unit) : ListAdap
     }
 
 
-    inner class ViewPagerViewHolder(private val binding: CardLayoutBinding) : RecyclerView.ViewHolder(binding.root){
-        fun onBind(items: CardInfo){
+    inner class ViewPagerViewHolder(private val binding: CardLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun onBind(items: CardInfo) {
+
+            val format = SimpleDateFormat("MM/yy")
+            val formattedExpireDate = format.format(items.expireDate)
+
             binding.cardNumber.text = items.cardNumber.toString()
             binding.holderName.text = items.holderName
-            d("ViewPagerAdapter", "Binding card: ${items.cardNumber}")
+            binding.validDate.text = formattedExpireDate
 
             when (items.cardStatus) {
                 CardType.VISA -> {
                     binding.root.setBackgroundResource(R.drawable.visa_bcgkrnd)
                 }
+
                 CardType.MASTERCARD -> {
                     binding.root.setBackgroundResource(R.drawable.mastercard_bckgrnd)
-
-                    val layoutParams = binding.holderName.layoutParams as ViewGroup.MarginLayoutParams
-
-
                 }
             }
 
@@ -62,7 +65,6 @@ class ViewPagerAdapter(private val cardLongClick: (CardInfo) -> Unit) : ListAdap
                 cardLongClick(items)
                 true
             }
-
 
 
         }
