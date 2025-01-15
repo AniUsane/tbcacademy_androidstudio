@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.myapplication.databinding.BottomSheetBinding
 import com.example.myapplication.databinding.FragmentPaymentBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import java.util.Date
@@ -20,7 +21,7 @@ class PaymentFragment : BaseFragment<FragmentPaymentBinding>(FragmentPaymentBind
 
     override fun start() {
         val adapter = ViewPagerAdapter { card ->
-            showBottomSheet()
+            showBottomSheet(card)
         }
         binding.viewPager.adapter = adapter
         adapter.submitList(cardInfo)
@@ -30,14 +31,26 @@ class PaymentFragment : BaseFragment<FragmentPaymentBinding>(FragmentPaymentBind
         }
 
 
+
     }
 
-    private fun showBottomSheet(){
-        val dialogView = layoutInflater.inflate(R.layout.bottom_sheet, null)
+    private fun showBottomSheet(selectedCard: CardInfo){
+        val dialogBinding = BottomSheetBinding.inflate(layoutInflater)
         dialog = BottomSheetDialog(requireContext(), R.style.BottomSheetDialogTheme)
-        dialog.setContentView(dialogView)
+        dialog.setContentView(dialogBinding.root)
 
         dialog.show()
+
+        dialogBinding.yesBtn.setOnClickListener {
+            (binding.viewPager.adapter as? ViewPagerAdapter)?.removeCard(selectedCard)
+
+            dialog.dismiss()
+        }
+
+        dialogBinding.noBtn.setOnClickListener {
+            dialog.dismiss()
+        }
+
     }
 
 

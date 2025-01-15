@@ -2,9 +2,7 @@ package com.example.myapplication
 
 import android.util.Log.d
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.marginTop
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -65,9 +63,17 @@ class ViewPagerAdapter(private val cardLongClick: (CardInfo) -> Unit) : ListAdap
                 true
             }
 
+
+
         }
+
+
     }
 
-
+    fun removeCard(card: CardInfo) {
+        val currentList = currentList.toMutableList()
+        currentList.remove(card)
+        submitList(currentList)
+    }
 
 }

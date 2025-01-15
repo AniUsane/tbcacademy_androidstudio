@@ -20,8 +20,7 @@
     <fragment
         android:id="@+id/addCardFragment"
         android:name="com.example.myapplication.AddCardFragment"
-        android:label="fragment_add_card"
-        tools:layout="@layout/fragment_add_card" >
+        android:label="fragment_add_card" >
         <argument
             android:name="cardInfo"
             app:argType="com.example.myapplication.CardInfo" />
