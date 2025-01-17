@@ -1,16 +1,19 @@
 [versions]
 agp = "8.6.1"
-kotlin = "1.9.0"
+kotlin = "2.1.0"
 coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
 material = "1.12.0"
-activity = "1.9.3"
+activity = "1.10.0"
 constraintlayout = "2.2.0"
 navVersion = "2.8.5"
 safeArgsVersion = "2.8.5"
+serializationVersion = "1.8.0"
+serializationVer = "2.0.21"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -23,10 +26,13 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 navigation-fragment = {group = "androidx.navigation", name = "navigation-fragment", version.ref = "navVersion"}
 navigation-ui = {group = "androidx.navigation", name = "navigation-ui", version.ref = "navVersion"}
+serialization = {group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serializationVersion"}
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 safeargs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "safeArgsVersion" }
+serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "serializationVer" }
 
 

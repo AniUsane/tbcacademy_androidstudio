@@ -1,9 +1,10 @@
-import org.jetbrains.kotlin.utils.addToStdlib.safeAs
+//import org.jetbrains.kotlin.utils.addToStdlib.safeAs
 
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.safeargs)
+    alias(libs.plugins.serialization)
 }
 
 android {
@@ -53,4 +54,5 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
+    implementation(libs.serialization)
 }
