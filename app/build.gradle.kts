@@ -55,4 +55,6 @@ dependencies {
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
     implementation(libs.serialization)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
 }
