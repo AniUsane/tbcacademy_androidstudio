@@ -55,4 +55,8 @@ dependencies {
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
     implementation(libs.serialization)
+    implementation("com.squareup.moshi:moshi:1.15.0")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation("com.squareup.moshi:moshi-kotlin:1.15.0")
+
 }
