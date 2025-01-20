@@ -28,6 +28,9 @@ class UserViewModel: ViewModel() {
             } catch (e: HttpException){
                 d("LogInFragment", "HttpException, unexpected response")
                 return@launch
+            } catch (e: Exception) {
+                d("LogInFragment", "Unexpected error occurred.")
+                return@launch
             }
 
             if(responseBody.isSuccessful && responseBody.body() != null){
@@ -52,6 +55,9 @@ class UserViewModel: ViewModel() {
                 return@launch
             } catch (e: HttpException){
                 d("LogInFragment", "HttpException, unexpected response")
+                return@launch
+            } catch (e: Exception) {
+                d("LogInFragment", "Unexpected error occurred.")
                 return@launch
             }
 
