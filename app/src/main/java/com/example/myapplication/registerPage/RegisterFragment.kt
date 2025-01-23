@@ -3,14 +3,14 @@ package com.example.myapplication.registerPage
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.example.myapplication.BaseFragment
-import com.example.myapplication.UserViewModel
+import com.example.myapplication.logInPage.UserLogInViewModel
 import com.example.myapplication.databinding.FragmentRegisterBinding
 
 class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterBinding::inflate) {
-    private val userViewModel: UserViewModel by viewModels()
+    private val userRegisterViewModel: UserRegisterViewModel by viewModels()
 
     override fun start() {
-        userViewModel.registrationStatus.observe(viewLifecycleOwner) { status ->
+        userRegisterViewModel.registrationStatus.observe(viewLifecycleOwner) { status ->
             Toast.makeText(requireContext(), status, Toast.LENGTH_SHORT).show()
         }
         binding.registerBtn.setOnClickListener {
@@ -31,7 +31,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
             return Toast.makeText(requireContext(), "You cannot register with this email.", Toast.LENGTH_SHORT).show()
         }
 
-        userViewModel.registerPost(email,password)
+        userRegisterViewModel.registerPost(email,password)
 
     }
 }

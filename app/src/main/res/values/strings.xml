@@ -10,4 +10,6 @@
     <string name="username_hint">Username</string>
     <string name="register_page_title">Register</string>
     <string name="email">Email</string>
+    <string name="log_out">Log out</string>
+    <string name="home_page_title">Home</string>
 </resources>

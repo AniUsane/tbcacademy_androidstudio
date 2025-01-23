@@ -3,12 +3,11 @@ package com.example.myapplication.logInPage
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.example.myapplication.BaseFragment
-import com.example.myapplication.UserViewModel
 import com.example.myapplication.databinding.FragmentLogInBinding
 
 
 class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::inflate) {
-    private val userViewModel: UserViewModel by viewModels()
+    private val userLogInViewModel: UserLogInViewModel by viewModels()
 
     override fun start() {
         listener()
@@ -22,7 +21,7 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show()
             } else {
-                userViewModel.loginPost(email, password)
+                userLogInViewModel.loginPost(email, password)
             }
         }
     }
