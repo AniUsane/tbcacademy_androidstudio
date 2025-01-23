@@ -5,7 +5,6 @@ import androidx.fragment.app.viewModels
 import com.example.myapplication.BaseFragment
 import com.example.myapplication.databinding.FragmentLogInBinding
 
-
 class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::inflate) {
     private val userLogInViewModel: UserLogInViewModel by viewModels()
 
