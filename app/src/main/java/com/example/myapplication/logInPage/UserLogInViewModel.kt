@@ -2,8 +2,6 @@ package com.example.myapplication.logInPage
 
 import android.content.Context
 import android.util.Log.d
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.RetrofitClient
@@ -14,15 +12,16 @@ import retrofit2.HttpException
 import java.io.IOException
 
 
-class UserLogInViewModel(private val context:Context): ViewModel() {
+class UserLogInViewModel(): ViewModel() {
 
-    fun loginPost(email: String, password: String, rememberMe: Boolean, onSuccess: () -> Unit, onError: (String) -> Unit){
+    //logs in users by sending info to server
+    fun loginPost(context: Context, email: String, password: String, rememberMe: Boolean, onSuccess: () -> Unit, onError: (String) -> Unit){
         viewModelScope.launch(Dispatchers.IO){
             try {
                 val responseBody = RetrofitClient.retrofit.postLogin(UserInfo(email, password))
                 if (responseBody.isSuccessful && responseBody.body() != null) {
                     val token = responseBody.body()?.token ?: ""
-                    saveData(email, token, rememberMe)
+                    saveData(context, email, token, rememberMe)
                     onSuccess()
                 }else {
                     onError("Login failed. Please check your credentials.")
@@ -41,7 +40,8 @@ class UserLogInViewModel(private val context:Context): ViewModel() {
         }
     }
 
-    private fun saveData(email: String, token:String, rememberMe: Boolean){
+    //saves data
+    private fun saveData(context: Context, email: String, token:String, rememberMe: Boolean){
         val sharedPref = context.getSharedPreferences("UserPreferences", Context.MODE_PRIVATE)
         val editor = sharedPref.edit()
         editor.apply {

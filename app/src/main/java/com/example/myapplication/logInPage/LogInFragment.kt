@@ -19,17 +19,28 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
         checkSession()
     }
 
+    //logic for "log in" button
     private fun listener(){
         binding.loginBtn.setOnClickListener{
             val email = binding.username.text.toString()
             val password = binding.password.text.toString()
             val rememberMe = binding.rememberMe.isChecked
 
+            val sharedPref = requireActivity().getSharedPreferences("UserPreferences", Context.MODE_PRIVATE)
+            val registeredPassword = sharedPref.getString("registeredPassword", null)
+
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if(password != registeredPassword){
+                Toast.makeText(requireContext(), "Incorrect password.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
 
             userLogInViewModel.loginPost(
+                context = requireContext(),
                 email = email,
                 password = password,
                 rememberMe = rememberMe,
@@ -45,6 +56,7 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
         }
     }
 
+    //gets data from registration and writes data in log in fields
     private fun listenForRegisterResult() {
         setFragmentResultListener("registerResult") { _, bundle ->
             val email = bundle.getString("email")

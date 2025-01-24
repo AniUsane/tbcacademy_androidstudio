@@ -1,5 +1,6 @@
 package com.example.myapplication.registerPage
 
+import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.setFragmentResult
@@ -19,14 +20,10 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
         }
         binding.registerBtn.setOnClickListener {
             checkEmptyFields()
-
-
         }
-
-
-
     }
 
+    //checks for empty fields and validates them
     private fun checkEmptyFields(){
         val email = binding.email.text.toString()
         val password = binding.password.text.toString()
@@ -43,7 +40,9 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
 
         if (repeatPassword != password) {
             Toast.makeText(requireContext(), "Passwords do not match.", Toast.LENGTH_SHORT).show()
-        }else{
+        }
+        else{
+            sendResultToLogIn(email, password)
             navigateToLogIn(email, password)
         }
 
@@ -63,7 +62,14 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
 
     }
 
+    //saves email and password and sends it to log in fragment
     private fun sendResultToLogIn(email: String, password: String) {
+        val sharedPref = requireActivity().getSharedPreferences("UserPreferences", Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.putString("registeredEmail", email)
+        editor.putString("registeredPassword", password)
+        editor.apply()
+
         val result = Bundle().apply {
             putString("email", email)
             putString("password", password)
@@ -71,6 +77,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
         setFragmentResult("registerResult", result)
     }
 
+    //navigation to "Log in" page
     private fun navigateToLogIn(email: String, password: String) {
         val result = Bundle().apply {
             putString("email", email)
