@@ -5,18 +5,25 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.myapplication.BaseFragment
 import com.example.myapplication.R
 import com.example.myapplication.logInPage.UserLogInViewModel
 import com.example.myapplication.databinding.FragmentRegisterBinding
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterBinding::inflate) {
     private val userRegisterViewModel: UserRegisterViewModel by viewModels()
 
     override fun start() {
-        userRegisterViewModel.registrationStatus.observe(viewLifecycleOwner) { status ->
-            Toast.makeText(requireContext(), status, Toast.LENGTH_SHORT).show()
+        viewLifecycleOwner.lifecycleScope.launch {
+            userRegisterViewModel.registrationStatus.collectLatest { status ->
+                if(status != null){
+                    Toast.makeText(requireContext(), status, Toast.LENGTH_SHORT).show()
+                }
+            }
         }
         binding.registerBtn.setOnClickListener {
             checkEmptyFields()

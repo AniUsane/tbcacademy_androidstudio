@@ -46,7 +46,7 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
                 rememberMe = rememberMe,
 
                 onSuccess = {
-                    findNavController().navigate(R.id.action_logInFragment_to_homeFragment)
+                    findNavController().navigate(R.id.action_logInFragment_to_profileFragment)
                 },
                 onError = { errorMessage ->
                     Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
@@ -72,7 +72,7 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
         val isLoggedIn = sharedPref.getBoolean("isLoggedIn", false)
 
         if (isLoggedIn) {
-            findNavController().navigate(R.id.action_logInFragment_to_homeFragment)
+            findNavController().navigate(R.id.action_logInFragment_to_profileFragment)
         }
     }
 }

@@ -4,6 +4,7 @@ import com.example.myapplication.logInPage.LogInResponse
 import com.example.myapplication.registerPage.RegisterResponse
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface ProfileService {
@@ -13,4 +14,7 @@ interface ProfileService {
 
     @POST("/api/register")
     suspend fun postRegister(@Body registerRequest: UserInfo): Response<RegisterResponse>
+
+    @GET("/api/users?page=1")
+    suspend fun getUserList(): UserResponse
 }

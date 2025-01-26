@@ -13,4 +13,5 @@
     <string name="log_out">Log out</string>
     <string name="home_page_title">Home</string>
     <string name="remember_me">Remember me</string>
+    <string name="profile">Profile</string>
 </resources>

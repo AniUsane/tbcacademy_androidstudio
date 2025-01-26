@@ -12,7 +12,7 @@ import retrofit2.HttpException
 import java.io.IOException
 
 
-class UserLogInViewModel(): ViewModel() {
+class UserLogInViewModel: ViewModel() {
 
     //logs in users by sending info to server
     fun loginPost(context: Context, email: String, password: String, rememberMe: Boolean, onSuccess: () -> Unit, onError: (String) -> Unit){

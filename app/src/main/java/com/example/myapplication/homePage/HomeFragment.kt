@@ -1,38 +1,34 @@
 package com.example.myapplication.homePage
 
-import android.content.Context
 import android.util.Log.d
-import androidx.navigation.fragment.findNavController
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.BaseFragment
-import com.example.myapplication.R
+import com.example.myapplication.RetrofitClient
 import com.example.myapplication.databinding.FragmentHomeBinding
+import kotlinx.coroutines.launch
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
-
+    private lateinit var viewModel: HomeViewModel
+    private val adapter = UserAdapter()
     override fun start() {
-        displayEmail()
-        binding.logoutBtn.setOnClickListener {
-            clearSession()
+        val repository = UserRepository(RetrofitClient.retrofit)
+        viewModel = HomeViewModel(repository)
+
+        binding.userRecycler.layoutManager = LinearLayoutManager(requireContext())
+        binding.userRecycler.adapter = adapter
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.users.collect { userList ->
+                d("HomeFragment", "User list: $userList")
+                adapter.submitList(userList)
+            }
         }
-    }
 
-    //clears session
-    private fun clearSession(){
-        val sharedPref = requireActivity().getSharedPreferences("UserPreferences", Context.MODE_PRIVATE)
-        sharedPref.edit().clear().apply()
-        navigateToLogIn()
-    }
+        viewModel.fetchUsers()
 
-    //navigation to log in page
-    private fun navigateToLogIn(){
-        findNavController().navigate(R.id.action_homeFragment_to_logInFragment)
-    }
 
-    //displays the email which user used to log in
-    private fun displayEmail() {
-        val sharedPref = requireActivity().getSharedPreferences("UserPreferences", Context.MODE_PRIVATE)
-        val email = sharedPref.getString("email", "No email found")
-        binding.emailText.text = email
+
     }
 
 }

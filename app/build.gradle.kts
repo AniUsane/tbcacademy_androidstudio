@@ -57,4 +57,5 @@ dependencies {
     implementation(libs.serialization)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+    implementation(libs.glide)
 }
