@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.BaseFragment
 import com.example.myapplication.RetrofitClient
 import com.example.myapplication.databinding.FragmentHomeBinding
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
@@ -19,16 +20,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         binding.userRecycler.adapter = adapter
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.users.collect { userList ->
-                d("HomeFragment", "User list: $userList")
-                adapter.submitList(userList)
+            viewModel.userList.collectLatest { pagingData ->
+                d("HomeFragment", "User list: $pagingData")
+                adapter.submitData(pagingData)
             }
         }
-
-        viewModel.fetchUsers()
-
-
-
     }
-
 }

@@ -2,8 +2,8 @@ package com.example.myapplication.homePage
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.User
@@ -20,7 +20,7 @@ class UserDiffUtil: DiffUtil.ItemCallback<User>(){
 
 }
 
-class UserAdapter(private val users: MutableList<User> = mutableListOf<User>()): ListAdapter<User, UserAdapter.UserViewHolder>(UserDiffUtil()) {
+class UserAdapter: PagingDataAdapter<User, UserAdapter.UserViewHolder>(UserDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         return UserViewHolder(
@@ -34,7 +34,8 @@ class UserAdapter(private val users: MutableList<User> = mutableListOf<User>()):
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val model = getItem(position)
-        holder.onBind(model)
+        if(model != null)
+            holder.onBind(model)
     }
 
     class UserViewHolder(private val binding: RecyclerViewBinding) :

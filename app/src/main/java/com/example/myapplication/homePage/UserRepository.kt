@@ -1,20 +1,22 @@
 package com.example.myapplication.homePage
 
-import android.util.Log.d
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.example.myapplication.ProfileService
 import com.example.myapplication.User
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 
 class UserRepository(private val service: ProfileService) {
-    fun getUserList(): Flow<List<User>> = flow {
-        try {
-            val response = service.getUserList()
-            d("UserRepository", "API Response: ${response.data}")
-            emit(response.data)
-        } catch (e: Exception) {
-            d("UserRepository", "Error fetching users: ${e.message}")
-            emit(emptyList())
-        }
+
+    fun getUserPaging(): Flow<PagingData<User>>{
+        return Pager(
+            config = PagingConfig(
+                pageSize = 6,
+                enablePlaceholders = false,
+                prefetchDistance = 1
+            ),
+            pagingSourceFactory = {UserPaging(service)}
+        ).flow
     }
 }

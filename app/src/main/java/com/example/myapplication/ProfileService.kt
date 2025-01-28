@@ -6,6 +6,7 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface ProfileService {
 
@@ -15,6 +16,6 @@ interface ProfileService {
     @POST("/api/register")
     suspend fun postRegister(@Body registerRequest: UserInfo): Response<RegisterResponse>
 
-    @GET("/api/users?page=1")
-    suspend fun getUserList(): UserResponse
+    @GET("/api/users")
+    suspend fun getUserList(@Query("page") page: Int): UserResponse
 }
