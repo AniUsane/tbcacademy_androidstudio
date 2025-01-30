@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.safeargs)
     alias(libs.plugins.serialization)
+    id("com.google.protobuf") version "0.9.4"
 }
 
 android {
@@ -55,4 +56,22 @@ dependencies {
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
     implementation(libs.serialization)
+
+    implementation(libs.androidx.datastore)
+    implementation(libs.protobuf.javalite)
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:4.29.0"
+    }
+    generateProtoTasks {
+        all().configureEach {
+            plugins {
+                create("java") {
+                    option("lite")
+                }
+            }
+        }
+    }
 }

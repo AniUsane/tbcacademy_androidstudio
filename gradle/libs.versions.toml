@@ -1,5 +1,6 @@
 [versions]
 agp = "8.6.1"
+datastore = "1.1.2"
 kotlin = "2.1.0"
 coreKtx = "1.15.0"
 junit = "4.13.2"
@@ -10,6 +11,7 @@ material = "1.12.0"
 activity = "1.10.0"
 constraintlayout = "2.2.0"
 navVersion = "2.8.5"
+protobufJavalite = "3.25.3"
 safeArgsVersion = "2.8.5"
 serializationVersion = "1.8.0"
 serializationVer = "2.0.21"
@@ -17,6 +19,7 @@ serializationVer = "2.0.21"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-datastore = { module = "androidx.datastore:datastore", version.ref = "datastore" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -26,6 +29,7 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 navigation-fragment = {group = "androidx.navigation", name = "navigation-fragment", version.ref = "navVersion"}
 navigation-ui = {group = "androidx.navigation", name = "navigation-ui", version.ref = "navVersion"}
+protobuf-javalite = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protobufJavalite" }
 serialization = {group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serializationVersion"}
 
 
