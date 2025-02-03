@@ -55,4 +55,14 @@ dependencies {
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
     implementation(libs.serialization)
+
+    implementation(libs.room)
+//    implementation(libs.ksp)
+    implementation(libs.roomKtx)
+    implementation(libs.retrofit)
+    implementation(libs.gson)
+    implementation(libs.glide)
+//    implementation(libs.glideComp)
+
 }
+
