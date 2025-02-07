@@ -11,7 +11,7 @@ abstract class BaseFragment<VB: ViewBinding>(
     private val inflater: (LayoutInflater, ViewGroup?, Boolean) -> VB):
     Fragment(){
     private var _binding: VB? = null
-    private val binding get() = _binding!!
+    val binding get() = _binding!!
 
     abstract fun start()
 
