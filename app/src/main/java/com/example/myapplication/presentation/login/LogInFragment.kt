@@ -1,5 +1,6 @@
-package com.example.myapplication.logInPage
+package com.example.myapplication.presentation.login
 
+import LoginViewModel
 import android.content.Context
 import android.widget.Toast
 import androidx.fragment.app.setFragmentResultListener
@@ -22,9 +23,9 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
     //logic for "log in" button
     private fun listener(){
         binding.logInBtn.setOnClickListener{
-            val email = binding.email.text.toString()
             val password = binding.password.text.toString()
             val rememberMe = binding.checkBox.isChecked
+            val email = binding.email.text.toString()
 
             val sharedPref = requireActivity().getSharedPreferences("UserPreferences", Context.MODE_PRIVATE)
             val registeredPassword = sharedPref.getString("registeredPassword", null)
@@ -53,6 +54,10 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
                 }
             )
 
+        }
+
+        binding.registerBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_logInFragment_to_registerFragment)
         }
     }
 

@@ -62,6 +62,8 @@ dependencies {
     implementation(libs.protobuf)
     implementation(libs.paging)
     implementation(libs.retrofit)
+    implementation(libs.datastore)
+    implementation(libs.glide)
 }
 
 protobuf {

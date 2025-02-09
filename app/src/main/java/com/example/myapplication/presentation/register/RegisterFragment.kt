@@ -1,5 +1,6 @@
-package com.example.myapplication.registerPage
+package com.example.myapplication.presentation.register
 
+import RegisterViewModel
 import android.content.Context
 import android.os.Bundle
 import android.widget.Toast

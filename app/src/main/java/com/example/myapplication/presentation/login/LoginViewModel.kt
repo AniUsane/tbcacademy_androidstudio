@@ -1,5 +1,3 @@
-package com.example.myapplication.logInPage
-
 import android.content.Context
 import android.util.Log.d
 import androidx.lifecycle.ViewModel
@@ -18,7 +16,7 @@ class LoginViewModel: ViewModel() {
     fun loginPost(context: Context, email: String, password: String, rememberMe: Boolean, onSuccess: () -> Unit, onError: (String) -> Unit){
         viewModelScope.launch(Dispatchers.IO){
             try {
-                val responseBody = RetrofitClient.retrofit.logIn(UserInfo(email, password))
+                val responseBody = RetrofitClient.retrofit.postLogin(UserInfo(email, password))
                 if (responseBody.isSuccessful && responseBody.body() != null) {
                     val token = responseBody.body()?.token ?: ""
                     saveData(context, email, token, rememberMe)
