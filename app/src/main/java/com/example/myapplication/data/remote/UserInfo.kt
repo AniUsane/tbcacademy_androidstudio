@@ -1,9 +1,6 @@
-package com.example.myapplication.data.remote
+package com.example.myapplication
 
-data class UserInfo(
-    val id: Int,
-    val email: String,
-    val password: String,
-    val repeatedPassword: String,
+import kotlinx.serialization.Serializable
 
-)
+@Serializable
+data class UserInfo(val email:String, val password:String)

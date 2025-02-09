@@ -1,13 +1,19 @@
-package com.example.myapplication.data.remote
+package com.example.myapplication
 
+import com.example.myapplication.data.remote.LoginResponse
+import com.example.myapplication.data.remote.RegisterResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface ProfileService {
-    @POST("api/login")
-    suspend fun logIn(@Body loginRequest: Request): Response<LoginResponse>
 
-    @POST("api/register")
-    suspend fun register(@Body registerRequest: Request): Response<RegisterResponse>
+    @POST("/api/login")
+    suspend fun postLogin(@Body loginRequest: UserInfo): Response<LoginResponse>
+
+    @POST("/api/register")
+    suspend fun postRegister(@Body registerRequest: UserInfo): Response<RegisterResponse>
+
+//    @GET("/api/users")
+//    suspend fun getUserList(@Query("page") page: Int): UserResponse
 }

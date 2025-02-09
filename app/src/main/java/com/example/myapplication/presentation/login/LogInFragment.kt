@@ -1,86 +1,78 @@
-package com.example.myapplication.presentation.login
+package com.example.myapplication.logInPage
 
-import android.util.Log.d
-import android.view.View
+import android.content.Context
 import android.widget.Toast
+import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.example.myapplication.R
-import com.example.myapplication.data.remote.Resource
-import com.example.myapplication.data.remote.datastore.DataStoreManager
-import com.example.myapplication.data.remote.datastore.PreferenceKeys
 import com.example.myapplication.databinding.FragmentLogInBinding
 import com.example.myapplication.presentation.BaseFragment
-import com.example.myapplication.presentation.register.RegisterViewModel
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
+
 
 class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::inflate) {
-    private val loginViewModel: LoginViewModel by viewModels()
+    private val userLogInViewModel: LoginViewModel by viewModels()
 
     override fun start() {
-        listeners()
-        checkRememberMe()
+        listener()
+        listenForRegisterResult()
+        checkSession()
     }
 
-    private fun listeners(){
-        binding.registerBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_logInFragment_to_registerFragment)
-        }
+    //logic for "log in" button
+    private fun listener(){
         binding.logInBtn.setOnClickListener{
             val email = binding.email.text.toString()
             val password = binding.password.text.toString()
             val rememberMe = binding.checkBox.isChecked
+
+            val sharedPref = requireActivity().getSharedPreferences("UserPreferences", Context.MODE_PRIVATE)
+            val registeredPassword = sharedPref.getString("registeredPassword", null)
 
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            loginViewModel.login(email, password, rememberMe)
+            if(password != registeredPassword){
+                Toast.makeText(requireContext(), "Incorrect password.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
-            observeLogin()
-        }
-    }
+            userLogInViewModel.loginPost(
+                context = requireContext(),
+                email = email,
+                password = password,
+                rememberMe = rememberMe,
 
-    private fun observeLogin(){
-            viewLifecycleOwner.lifecycleScope.launch{
-                loginViewModel.loginStatus.collect{ result ->
-                    when (result) {
-                        is Resource.Loading -> {
-                            binding.loader.visibility = View.VISIBLE
-                        }
-                        is Resource.Success<String> -> {
-                            binding.loader.visibility = View.GONE
-                            findNavController().navigate(R.id.action_logInFragment_to_homeFragment)
-                        }
-
-                        is Resource.Error -> {
-                            binding.loader.visibility = View.GONE
-                            Toast.makeText(requireContext(), result.errorMessage, Toast.LENGTH_SHORT).show()
-                        }
-
-                        is Resource.Default -> {
-
-                        }
-                    }
+                onSuccess = {
+                    findNavController().navigate(R.id.action_logInFragment_to_homeFragment)
+                },
+                onError = { errorMessage ->
+                    Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
                 }
-            }
-    }
+            )
 
-    private fun checkRememberMe() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            val email = DataStoreManager.readValue(PreferenceKeys.EMAIL)?.first().toString()
-            val password = DataStoreManager.readValue(PreferenceKeys.PASSWORD)?.first().toString()
-            if (email.isNotEmpty() && password.isNotEmpty()) {
-                binding.email.setText(email)
-                binding.password.setText(password)
-            }
         }
     }
 
+    //gets data from registration and writes data in log in fields
+    private fun listenForRegisterResult() {
+        setFragmentResultListener("registerResult") { _, bundle ->
+            val email = bundle.getString("email")
+            val password = bundle.getString("password")
+
+            binding.email.setText(email)
+            binding.password.setText(password)
+        }
+    }
+
+    private fun checkSession() {
+        val sharedPref = requireActivity().getSharedPreferences("UserPreferences", Context.MODE_PRIVATE)
+        val isLoggedIn = sharedPref.getBoolean("isLoggedIn", false)
+
+        if (isLoggedIn) {
+            findNavController().navigate(R.id.action_logInFragment_to_homeFragment)
+        }
+    }
 }
