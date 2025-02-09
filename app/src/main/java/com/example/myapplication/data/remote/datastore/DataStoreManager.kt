@@ -19,10 +19,10 @@ object DataStoreManager {
         }
     }
 
-    suspend fun readValue(key: Preferences.Key<String>): String {
-        return App.context?.datastore?.data
-            ?.map { it[key] ?: "" }
-            ?.first() ?: ""
+    fun readValue(key: Preferences.Key<String>): Flow<String>? {
+        return App.context?.datastore?.data?.map{
+            it[key] ?: ""
+        }
     }
 
 }

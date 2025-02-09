@@ -1,6 +1,5 @@
 package com.example.myapplication.presentation.login
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.data.remote.Request
@@ -46,25 +45,14 @@ class LoginViewModel: ViewModel() {
         }
     }
 
-    private fun saveData(context: Context, email: String, token:String, rememberMe: Boolean){
-        val sharedPref = context.getSharedPreferences("UserPreferences", Context.MODE_PRIVATE)
-        val editor = sharedPref.edit()
-        editor.apply {
-            putString("email", email)
-            putString("token", token)
-            putBoolean("isLoggedIn", rememberMe)
-            apply()
-        }
+    suspend fun getData(): Request {
+        val email = DataStoreManager.readValue(PreferenceKeys.EMAIL)?.first().toString()
+        val password = DataStoreManager.readValue(PreferenceKeys.PASSWORD)?.first().toString()
+        return Request(email, password)
     }
 
-//    suspend fun getData(): Request {
-//        val email = DataStoreManager.readValue(PreferenceKeys.EMAIL)
-//        val password = DataStoreManager.readValue(PreferenceKeys.PASSWORD)
-//        return Request(email, password)
-//    }
-//
-//    suspend fun isRememberMeEnabled(): Boolean {
-//        return DataStoreManager.readValue(PreferenceKeys.EMAIL).isNotEmpty()
-//    }
+    suspend fun isRememberMeEnabled(): Boolean {
+        return DataStoreManager.readValue(PreferenceKeys.EMAIL)?.first().toString().isNotEmpty()
+    }
 
 }

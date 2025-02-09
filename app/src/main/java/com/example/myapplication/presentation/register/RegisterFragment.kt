@@ -1,13 +1,10 @@
 package com.example.myapplication.presentation.register
 
-import android.os.Bundle
-import android.provider.Settings.Global.putString
 import android.util.Log.d
 import android.view.View
 import android.widget.Toast
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
-import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -86,8 +83,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
                         }
 
 
-                        sendResultToLogIn()
-                        navigateToLogIn()
+                        findNavController().navigate(R.id.action_registerFragment_to_logInFragment)
                     }
 
                     is Resource.Error -> {
@@ -101,28 +97,5 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
                 }
             }
         }
-    }
-
-    private fun sendResultToLogIn(email: String, password: String) {
-        val sharedPref = requireActivity().getSharedPreferences("UserPreferences", Context.MODE_PRIVATE)
-        val editor = sharedPref.edit()
-        editor.putString("registeredEmail", email)
-        editor.putString("registeredPassword", password)
-        editor.apply()
-
-        val result = Bundle().apply {
-            putString("email", email)
-            putString("password", password)
-        }
-        setFragmentResult("registerResult", result)
-    }
-
-    private fun navigateToLogIn(email: String, password: String) {
-        val result = Bundle().apply {
-            putString("email", email)
-            putString("password", password)
-        }
-        setFragmentResult("registerResult", result)
-        findNavController().navigate(R.id.action_registerFragment_to_logInFragment)
     }
 }

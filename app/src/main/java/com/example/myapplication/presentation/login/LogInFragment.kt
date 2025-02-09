@@ -27,14 +27,6 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
         checkRememberMe()
     }
 
-    private fun autoFillFields() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            val credentials = loginViewModel.getData()
-            binding.email.setText(credentials.email)
-            binding.password.setText(credentials.password)
-        }
-    }
-
     private fun listeners(){
         binding.registerBtn.setOnClickListener {
             findNavController().navigate(R.id.action_logInFragment_to_registerFragment)
@@ -57,7 +49,7 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
 
     private fun observeLogin(){
             viewLifecycleOwner.lifecycleScope.launch{
-                loginViewModel.loginStatus.collectLatest{ result ->
+                loginViewModel.loginStatus.collect{ result ->
                     when (result) {
                         is Resource.Loading -> {
                             binding.loader.visibility = View.VISIBLE
@@ -82,12 +74,11 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>(FragmentLogInBinding::i
 
     private fun checkRememberMe() {
         viewLifecycleOwner.lifecycleScope.launch {
-            val credentials = loginViewModel.getData()
-            if (credentials.email.isNotEmpty() && credentials.password.isNotEmpty()) {
-                // Auto-fill if credentials are available
-                binding.email.setText(credentials.email)
-                binding.password.setText(credentials.password)
-                binding.checkBox.isChecked = true
+            val email = DataStoreManager.readValue(PreferenceKeys.EMAIL)?.first().toString()
+            val password = DataStoreManager.readValue(PreferenceKeys.PASSWORD)?.first().toString()
+            if (email.isNotEmpty() && password.isNotEmpty()) {
+                binding.email.setText(email)
+                binding.password.setText(password)
             }
         }
     }
