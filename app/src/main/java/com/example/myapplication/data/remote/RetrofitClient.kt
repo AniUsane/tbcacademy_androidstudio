@@ -1,6 +1,5 @@
 package com.example.myapplication.data.remote
 
-import com.example.myapplication.ProfileService
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType

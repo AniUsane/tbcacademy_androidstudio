@@ -1,5 +1,7 @@
-package com.example.myapplication
+package com.example.myapplication.data.remote
 
+import com.example.myapplication.UserInfo
+import com.example.myapplication.UserResponse
 import com.example.myapplication.data.remote.LoginResponse
 import com.example.myapplication.data.remote.RegisterResponse
 import com.example.myapplication.data.remote.Request
@@ -24,5 +26,5 @@ interface ProfileService {
     suspend fun postRegister(@Body registerRequest: Request): Response<RegisterResponse>
 
     @GET("/api/users")
-    suspend fun getUserList(@Query("page") page: Int): UserResponse
+    suspend fun getUserList(@Query("page") page: Int): Response<UserResponse>
 }

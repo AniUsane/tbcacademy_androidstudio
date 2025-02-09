@@ -21,7 +21,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.userList.collectLatest { pagingData ->
-                d("HomeFragment", "User list: $pagingData")
+                d("HomeFragment", "Received PagingData: ${pagingData}")
                 adapter.submitData(pagingData)
             }
         }
