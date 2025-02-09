@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.safeargs)
     alias(libs.plugins.serialization)
+    alias(libs.plugins.protobuf)
 }
 
 android {
@@ -55,4 +56,25 @@ dependencies {
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
     implementation(libs.serialization)
+    implementation(libs.retroSerialize)
+    implementation(libs.okhttp)
+    implementation(libs.preferencesDataStore)
+    implementation(libs.protobuf)
+    implementation(libs.paging)
+    implementation(libs.retrofit)
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:4.29.0"
+    }
+    generateProtoTasks {
+        all().configureEach {
+            plugins {
+                create("java") {
+                    option("lite")
+                }
+            }
+        }
+    }
 }
