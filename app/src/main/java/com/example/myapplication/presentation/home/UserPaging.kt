@@ -1,5 +1,6 @@
 package com.example.myapplication.presentation.home
 
+import android.util.Log.d
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.myapplication.data.remote.ProfileService

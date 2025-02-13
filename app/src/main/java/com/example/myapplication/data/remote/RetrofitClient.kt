@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 
 object RetrofitClient {
 
-    private const val BASE_URL = "https://reqres.in/"
+    private const val BASE_URL = "https://reqres.in/api/"
 
     val retrofit: ProfileService = Retrofit.Builder()
         .baseUrl(BASE_URL)

@@ -6,7 +6,8 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.myapplication.data.remote.User
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class HomeViewModel(repository: UserRepository): ViewModel() {
+class HomeViewModel @Inject constructor(repository: UserRepository): ViewModel() {
     val userList: Flow<PagingData<User>> = repository.getUserPaging().cachedIn(viewModelScope)
 }

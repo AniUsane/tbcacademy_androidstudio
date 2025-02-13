@@ -42,7 +42,7 @@ class UserAdapter: PagingDataAdapter<User, UserAdapter.UserViewHolder>(UserDiffU
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(model: User) {
 
-            binding.username.text = "${model.first_name} ${model.last_name}"
+            binding.username.text = "${model.firstName} ${model.lastName}"
             Glide.with(binding.root.context)
                 .load(model.avatar)
                 .into(binding.avatar)

@@ -6,6 +6,8 @@ plugins {
     alias(libs.plugins.safeargs)
     alias(libs.plugins.serialization)
     alias(libs.plugins.protobuf)
+    alias(libs.plugins.hilt)
+    id("kotlin-kapt")
 }
 
 android {
@@ -64,6 +66,14 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.datastore)
     implementation(libs.glide)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+    implementation(libs.gson)
+    implementation(libs.kotlinx.metadata.jvm)
+}
+
+kapt {
+    correctErrorTypes = true
 }
 
 protobuf {

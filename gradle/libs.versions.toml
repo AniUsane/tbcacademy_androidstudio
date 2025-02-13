@@ -1,34 +1,41 @@
 [versions]
 agp = "8.6.1"
+hiltAndroid = "2.51.1"
 kotlin = "2.1.0"
 coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
+kotlinxMetadataJvm = "0.5.0"
 material = "1.12.0"
 activity = "1.10.0"
 constraintlayout = "2.2.0"
-navVersion = "2.8.6"
-safeArgsVersion = "2.8.6"
+navVersion = "2.8.7"
+safeArgsVersion = "2.8.7"
 serializationVersion = "1.8.0"
 serializationVer = "2.0.21"
 protobufVer = "0.9.4"
 datastoreVer = "1.1.2"
 protobufVersion = "3.25.3"
-pagingVersion = "3.3.5"
+pagingVersion = "3.3.6"
 retrofitVersion = "2.11.0"
 retroSerializeVer = "0.8.0"
 okhttpVer = "4.9.3"
 preferecesDataStoreVer = "1.1.2"
 glideVer = "4.16.0"
+hiltVer = "2.51.1"
+gsonVer = "2.9.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroid" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+kotlinx-metadata-jvm = { module = "org.jetbrains.kotlinx:kotlinx-metadata-jvm", version.ref = "kotlinxMetadataJvm" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
@@ -43,6 +50,7 @@ retrofit = {group = "com.squareup.retrofit2", name = "retrofit", version.ref = "
 okhttp = {group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttpVer"}
 preferencesDataStore = {group = "androidx.datastore", name = "datastore-preferences", version.ref = "preferecesDataStoreVer"}
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glideVer" }
+gson = {group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "gsonVer"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -50,3 +58,5 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 safeargs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "safeArgsVersion" }
 serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "serializationVer" }
 protobuf = {id = "com.google.protobuf", version.ref = "protobufVer"}
+hilt = {id = "com.google.dagger.hilt.android", version.ref = "hiltVer"}
+

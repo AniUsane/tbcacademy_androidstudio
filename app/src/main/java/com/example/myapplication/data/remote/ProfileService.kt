@@ -19,12 +19,12 @@ interface ProfileService {
 //    @POST("api/register")
 //    suspend fun register(@Body registerRequest: Request): Response<RegisterResponse>
 
-    @POST("/api/login")
+    @POST("login")
     suspend fun postLogin(@Body loginRequest: UserInfo): Response<LoginResponse>
 
-    @POST("/api/register")
+    @POST("register")
     suspend fun postRegister(@Body registerRequest: Request): Response<RegisterResponse>
 
-    @GET("/api/users")
+    @GET("users")
     suspend fun getUserList(@Query("page") page: Int): Response<UserResponse>
 }
