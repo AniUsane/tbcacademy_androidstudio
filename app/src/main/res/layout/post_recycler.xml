@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingHorizontal="19dp"
+    android:paddingVertical="28dp"
+    android:layout_marginBottom="24dp"
+    android:background="@drawable/post_background">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/profileImg"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:clipToOutline="true"
+        android:src="@drawable/default_pfp"
+        android:background="@drawable/user_image_background"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:fontFamily="@font/sf_pro_display"
+        android:layout_marginLeft="15dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/profileImg"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/post_text"
+        android:textSize="14sp"
+        android:fontFamily="@font/sf_pro_display"
+        android:layout_marginLeft="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/userName"
+        app:layout_constraintLeft_toRightOf="@+id/profileImg"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:fontFamily="@font/sf_pro_display"
+        android:layout_marginTop="9dp"
+        app:layout_constraintTop_toBottomOf="@+id/profileImg"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/postImg1"
+        android:layout_width="133dp"
+        android:layout_height="154dp"
+        android:background="@drawable/post_img_background"
+        android:scaleType="centerCrop"
+        android:clipToOutline="true"
+        android:src="@drawable/image"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/postImg2"
+        android:layout_width="133dp"
+        android:layout_height="71dp"
+        android:background="@drawable/post_img_background"
+        android:scaleType="centerCrop"
+        android:src="@drawable/image"
+        android:clipToOutline="true"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintLeft_toRightOf="@id/postImg1"
+        app:layout_constraintRight_toRightOf="parent"
+
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/postImg3"
+        android:layout_width="133dp"
+        android:layout_height="71dp"
+        android:background="@drawable/post_img_background"
+        android:scaleType="centerCrop"
+        android:clipToOutline="true"
+        android:visibility="gone"
+        android:src="@drawable/image"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/postImg2"
+        app:layout_constraintLeft_toRightOf="@+id/postImg1"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <View
+        android:id="@+id/sectionLine1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#B8C2C0"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/postImg1"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/commentIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/comment_icon"
+        android:layout_marginTop="18dp"
+        app:layout_constraintTop_toBottomOf="@+id/sectionLine1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/comment"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/post_text"
+        android:textSize="14sp"
+        android:fontFamily="@font/sf_pro_display"
+        android:layout_marginTop="11dp"
+        app:layout_constraintLeft_toRightOf="@+id/commentIcon"
+        app:layout_constraintTop_toBottomOf="@+id/sectionLine1"
+        app:layout_constraintRight_toLeftOf="@+id/heartIcon"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/heartIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/heart_icon"
+        android:layout_marginTop="18dp"
+        app:layout_constraintTop_toBottomOf="@+id/sectionLine1"
+        app:layout_constraintLeft_toRightOf="@+id/comment"
+        app:layout_constraintRight_toLeftOf="@+id/likes"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/likes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/post_text"
+        android:textSize="14sp"
+        android:fontFamily="@font/sf_pro_display"
+        android:layout_marginTop="11dp"
+        app:layout_constraintLeft_toRightOf="@+id/heartIcon"
+        app:layout_constraintTop_toBottomOf="@+id/sectionLine1"
+        app:layout_constraintRight_toLeftOf="@+id/shareIcon"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/shareIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/share_icon"
+        android:layout_marginTop="18dp"
+        app:layout_constraintTop_toBottomOf="@+id/sectionLine1"
+        app:layout_constraintLeft_toRightOf="@+id/likes"
+        app:layout_constraintRight_toLeftOf="@+id/shares"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/shares"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/post_text"
+        android:textSize="14sp"
+        android:fontFamily="@font/sf_pro_display"
+        android:layout_marginTop="11dp"
+        app:layout_constraintLeft_toRightOf="@+id/shareIcon"
+        app:layout_constraintBaseline_toBaselineOf="@+id/comment"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <View
+        android:id="@+id/devider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="21dp"
+        android:background="#B8C2C0"
+        app:layout_constraintTop_toBottomOf="@+id/commentIcon"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/userProfileImg"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:background="@drawable/profile_background"
+        android:layout_marginTop="15dp"
+        android:scaleType="centerCrop"
+        android:clipToOutline="true"
+        app:layout_constraintTop_toBottomOf="@+id/devider2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/commentField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/comment_background"
+        android:hint="Write comment"
+        android:paddingVertical="13dp"
+        android:paddingHorizontal="16dp"
+        android:textColorHint="@color/post_text"
+        android:textColor="@color/post_text"
+        android:textSize="14sp"
+        android:fontFamily="@font/sf_pro_display"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="12dp"
+        app:layout_constraintTop_toBottomOf="@+id/devider2"
+        app:layout_constraintLeft_toRightOf="@+id/userProfileImg"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/attachIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/clip_icon"
+        android:layout_marginRight="12dp"
+        app:layout_constraintRight_toRightOf="@+id/commentField"
+        app:layout_constraintTop_toTopOf="@+id/commentField"
+        app:layout_constraintBottom_toBottomOf="@+id/commentField"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

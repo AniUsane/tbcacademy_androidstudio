@@ -2,4 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="background_color">#1F2E35</color>
+    <color name="post_text">#96A7AF</color>
+    <color name="card_background">#30444E</color>
+    <color name="profile_color">#FF565E</color>
+    <color name="comment_background">#2A3C44</color>
+    <color name="green">#3DD598</color>
 </resources>
