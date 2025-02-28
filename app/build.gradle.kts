@@ -4,8 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.safeargs)
     alias(libs.plugins.serialization)
-    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
-
+    alias(libs.plugins.maps.secrets.gradle)
 }
 
 android {
@@ -57,4 +56,7 @@ dependencies {
     implementation(libs.navigation.ui)
     implementation(libs.serialization)
     implementation(libs.play.services.maps)
+    implementation(libs.services.location)
+    implementation(libs.maps.utils.ktx)
+
 }

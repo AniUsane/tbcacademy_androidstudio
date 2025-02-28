@@ -14,7 +14,9 @@ playServicesMaps = "19.1.0"
 safeArgsVersion = "2.8.8"
 serializationVersion = "1.8.0"
 serializationVer = "2.0.21"
-
+mapsUtilsKtx = "3.4.0"
+maps-secrets-gradle-plugin = "2.0.1"
+services-locationVer = "21.0.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -29,6 +31,8 @@ navigation-fragment = {group = "androidx.navigation", name = "navigation-fragmen
 navigation-ui = {group = "androidx.navigation", name = "navigation-ui", version.ref = "navVersion"}
 play-services-maps = { module = "com.google.android.gms:play-services-maps", version.ref = "playServicesMaps" }
 serialization = {group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serializationVersion"}
+maps-utils-ktx = { module = "com.google.maps.android:maps-utils-ktx", version.ref = "mapsUtilsKtx" }
+services-location = { module = "com.google.android.gms:play-services-location", version.ref = "services-locationVer" }
 
 
 [plugins]
@@ -36,5 +40,4 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 safeargs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "safeArgsVersion" }
 serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "serializationVer" }
-
-
+maps-secrets-gradle = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "maps-secrets-gradle-plugin" }
