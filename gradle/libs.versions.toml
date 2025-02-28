@@ -7,10 +7,11 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
 material = "1.12.0"
-activity = "1.10.0"
-constraintlayout = "2.2.0"
-navVersion = "2.8.5"
-safeArgsVersion = "2.8.5"
+activity = "1.10.1"
+constraintlayout = "2.2.1"
+navVersion = "2.8.8"
+playServicesMaps = "19.1.0"
+safeArgsVersion = "2.8.8"
 serializationVersion = "1.8.0"
 serializationVer = "2.0.21"
 
@@ -26,6 +27,7 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 navigation-fragment = {group = "androidx.navigation", name = "navigation-fragment", version.ref = "navVersion"}
 navigation-ui = {group = "androidx.navigation", name = "navigation-ui", version.ref = "navVersion"}
+play-services-maps = { module = "com.google.android.gms:play-services-maps", version.ref = "playServicesMaps" }
 serialization = {group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serializationVersion"}
 
 
